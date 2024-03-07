@@ -259,7 +259,7 @@ class _LoginPageState extends State<LoginPage> {
 
           // Login  Button Click isLoading and Progressbar show Inside //
           InkWell(
-            onTap: () async {
+            onTap: checkResult ? () async {
               setState(() {
                 isLoading = true;
                 loginWithEmailAndPassword();
@@ -269,12 +269,12 @@ class _LoginPageState extends State<LoginPage> {
                   isLoading = false;
                 });
               });
-            },
+            }:null,
             child: Container(
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 100),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50), color: Colors.white),
+                  borderRadius: BorderRadius.circular(50),  color: checkResult ? Colors.white : Colors.grey,),
               child: Center(
                 child: InkWell(
                   child: isLoading

@@ -18,7 +18,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  late String _password;
+  late String _password ="";
 
   // Password variable visible show & off //
   bool passwordVisible = false;
@@ -30,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
 
   //using this code for name validation for RegExp //
   final RegExp _nameRegExp =
@@ -98,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       Fluttertoast.showToast(msg: 'Number is required in password');
     } else if (!_passwordController.text.contains(RegExp(r'[@,!,#,%,&,*$,]'))) {
       Fluttertoast.showToast(msg: 'Special Character is required in password');
-    }else {
+    } else {
       userEmailAuth();
     }
   }
@@ -133,7 +132,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       Fluttertoast.showToast(msg: 'Register Failed');
     });
   }
-
 
 // end //
 
@@ -307,24 +305,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 20),
             InkWell(
-              onTap: () async {
-                setState(() {
-                  isLoading = true;
-                });
-                Future.delayed(const Duration(seconds: 2), () {
-                  setState(() {
-                    isLoading = false;
-                    // call the function user store data in firebase //
-                  });
-                });
-                passwordValidateForm();
-              },
+              onTap: (_isNameValid && _isEmailValid && _password.isNotEmpty)
+                  ? () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      Future.delayed(const Duration(seconds: 2), () {
+                        setState(() {
+                          isLoading = false;
+                        });
+                      });
+                      passwordValidateForm();
+                    }
+                  : null,
               child: Container(
                 height: 50,
                 margin: const EdgeInsets.symmetric(horizontal: 100),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.white),
+                  borderRadius: BorderRadius.circular(50),
+                  color: (_isNameValid && _isEmailValid && _password.isNotEmpty)
+                      ? Colors.white
+                      : Colors.grey, // Change color based on field validations
+                ),
                 child: Center(
                   child: InkWell(
                     child: isLoading

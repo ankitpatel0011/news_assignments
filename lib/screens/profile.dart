@@ -64,15 +64,15 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
         title: Center(
           child: Text(
-            'Logout',
+            'LogOut',
             style: GoogleFonts.acme(color: Colors.white),
           ),
         ),
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(30),
+          const Padding(
+            padding:  EdgeInsets.all(30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -84,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           SizedBox(
-            height: Get.height*0.3,
+            height: Get.height*0.4,
             child: Card(
               child: ListView(
                 children: [
