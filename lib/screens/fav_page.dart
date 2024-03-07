@@ -12,7 +12,12 @@ class _FavouritePageState extends State<FavouritePage> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      child: Text("this is the fav page"),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Text("this is the fav page")),
+        ],
+      ),
     );
   }
 }
