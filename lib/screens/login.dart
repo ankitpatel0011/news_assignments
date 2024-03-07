@@ -294,10 +294,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         )
-                      : const Text(
+                      :  Text(
                           'LOGIN',
                           style: TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
+                              color: checkResult ? Colors.blue : Colors.white, fontWeight: FontWeight.bold),
                         ),
                 ),
               ),

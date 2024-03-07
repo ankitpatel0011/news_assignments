@@ -23,6 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   // Password variable visible show & off //
   bool passwordVisible = false;
 
+  bool isDisable = false;
   // Button click isLoading variable //
   bool isLoading = false;
 
@@ -346,10 +347,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ],
                           )
-                        : const Text(
+                        :  Text(
                             'REGISTER',
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: isDisable ? Colors.blue : Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
                   ),
